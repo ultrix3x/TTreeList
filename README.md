@@ -1,203 +1,202 @@
-TTreeList
-=========
+# TTreeList
 TreeList is a hybrid between a double linked list and a binary tree.
 
-class TTreeList
-===============
-Properties
-  TTreeNode root
+## class TTreeList
+### Properties
+#### TTreeNode root
     returns the root node of the tree if the tree isn't dirty
 
-  TTreeNode first
+#### TTreeNode first
     returns the first node of the linked list if the tree isn't dirty
 
-  TTreeNode last
+#### TTreeNode last
     returns the last node of the linked list if the tree isn't dirty
 
-  TTreeNode treeCount (alternative name treecount)
+#### TTreeNode treeCount (alternative name treecount)
     returns the number of nodes in the tree if the three isn't dirty
 
-  boolean isDirty (alternative name isdirty)
+#### boolean isDirty (alternative name isdirty)
     returns the dirty state. Returns true if a node has been added since the
     last build.
 
-Functions
-  AssignPDO(PDOStatement)
+### Functions
+#### AssignPDO(PDOStatement)
     Assigns the dataset from an PDOStatement as the data nodes
 
-  AssignArray(array)
+#### AssignArray(array)
     Assigns the array as the data nodes. The array must be an array of arrays.
 
-  TTreeNode GetRoot()
+#### TTreeNode GetRoot()
     returns the root node of the tree if the tree isn't dirty.
 
-  TTreeNode GetFirst()
+#### TTreeNode GetFirst()
     returns the first node of the linked list if the tree isn't dirty.
 
-  TTreeNode GetLast()
+#### TTreeNode GetLast()
     returns the last node of the linked list if the tree isn't dirty.
 
-  AddNode(mixed)
+#### AddNode(mixed)
     Add a new node to the data nodes
 
-  Clear()
+#### Clear()
     Clear tree properties.
 
-  Clean()
+#### Clean()
     Clear tree properties and empties the data nodes.
 
-  AddBuildFilter(function)
+#### AddBuildFilter(function)
     Add a filter functions that is called then a build is performed.
     The function should accept a TTreeNode as an argument and return a boolean
     value. True will accept the current node and false will reject the current
     node.
 
-  ClearBuildFilter()
+#### ClearBuildFilter()
     Removes all filter functions.
 
-  TTreeNode Build(string)
+#### TTreeNode Build(string)
     Builds a tree based on the index defined by the argument.
 
-  TTreeNode Seek(string)
+#### TTreeNode Seek(string)
     Locates a node in the tree which matches the argument.
     Returns a TTreeNode if a match is found or null if no match found.
 
-Supporting functions for implemented interfaces (not documented here)
-  count
-  serialize
-  unserialize
-  offsetExists
-  offsetGet
-  offsetSet
-  offsetUnset
-  current
-  key
-  next
-  rewind
-  valid
+### Supporting functions for implemented interfaces (not documented here)
+* count
+* serialize
+* unserialize
+* offsetExists
+* offsetGet
+* offsetSet
+* offsetUnset
+* current
+* key
+* next
+* rewind
+* valid
 
-class TTreeData
-===============
+## class TTreeData
 
-Properties
-  array data (read-only)
+### Properties
+#### array data (read-only)
     array data for the object
 
-Functions
-  array ClonedData()
+### Functions
+#### array ClonedData()
     makes a copy of the data in the object
 
-  array GetKeys()
+#### array GetKeys()
     get an array with the keys of the contained data
 
-Supporting functions for implemented interfaces (not documented here)
-  count
-  current
-  key
-  next
-  offsetExists
-  offsetGet
-  offsetSet
-  offsetUnset
-  rewind
-  serialize
-  unserialize
-  valid
+### Supporting functions for implemented interfaces (not documented here)
+* count
+* current
+* key
+* next
+* offsetExists
+* offsetGet
+* offsetSet
+* offsetUnset
+* rewind
+* serialize
+* unserialize
+* valid
 
-class TTreeNode
-===============
+## class TTreeNode
 
-Properties
-  string key
+### Properties
+#### string key
     contains the value for which the node is indexed in the tree/linked list
 
-  TTreeNode prev (read-only)
+#### TTreeNode prev (read-only)
     returns the previous node in the linked list
 
-  TTreeNode left (read-only)
+#### TTreeNode left (read-only)
     returns the left node in the tree
 
-  TTreeNode parent (read-only)
+#### TTreeNode parent (read-only)
     returns the parent node in the tree
 
-  TTreeNode right (read-only)
+#### TTreeNode right (read-only)
     returns the right node in the tree
 
-  TTreeNode next (read-only)
+#### TTreeNode next (read-only)
     returns the next node in the linked list
 
-Functions
-  AddPayload(TTreeNode)
+### Functions
+#### AddPayload(TTreeNode)
     add another node to this node. This is done when the build function finds
     a duplicate value
 
-  integer PayloadCount()
+#### integer PayloadCount()
     returns the number of data carrying nodes in this node
 
-  array PayloadKeys()
+#### array PayloadKeys()
     returns an array containing the indexes for the available data carrying
     nodes
 
-  SetActivePayload(mixed)
+#### SetActivePayload(mixed)
     Set the index representing the data carrying node in the payload array.
     The index must exist. Otherwise the payload is not changed.
 
-  SetPrev(TTreeNode, boolean $doReverse = true)
+#### SetPrev(TTreeNode, boolean $doReverse = true)
     Set the previous node for the linked list.
     If the second argument (doReverse) is set to true then the node
     automatically sets the next value for the added node.
 
-  SetLeft(TTreeNode, boolean $doReverse = true)
+#### SetLeft(TTreeNode, boolean $doReverse = true)
     Set the left node for the tree node.
     If the second argument (doReverse) is set to true then the node
     automatically sets the parent value for the added node.
 
-  SetParent(TTreeNode, boolean $doReverse = true)
+#### SetParent(TTreeNode, boolean $doReverse = true)
     Set the parent node for the tree node.
     If the second argument (doReverse) is set to true then nothing happend (yet)
 
-  SetRight(TTreeNode, boolean $doReverse = true)
+#### SetRight(TTreeNode, boolean $doReverse = true)
     Set the right node for the tree node.
     If the second argument (doReverse) is set to true then the node
     automatically sets the parent value for the added node.
 
-  SetNext(TTreeNode, boolean $doReverse = true)
+#### SetNext(TTreeNode, boolean $doReverse = true)
     Set the next node for the linked list.
     If the second argument (doReverse) is set to true then the node
     automatically sets the prev value for the added node.
 
-Supporting functions for implemented interfaces (not documented here)
-  count
-  current
-  key
-  next
-  offsetExists
-  offsetGet
-  offsetSet
-  offsetUnset
-  rewind
-  valid
-  
+### Supporting functions for implemented interfaces (not documented here)
+* count
+* current
+* key
+* next
+* offsetExists
+* offsetGet
+* offsetSet
+* offsetUnset
+* rewind
+* valid
+ 
 
-How to use
-==========
-Create a TTreeList the stanard way.
+## How to use
+### Create a TTreeList the standard way.
   $treelist = new TTreeList();
 
-Then add nodes by either adding them manually
+### Then add nodes by either adding them manually
   $treelist->AddNode($anArray); // adding a previously defined array
   $treelist->AddNode($aTreeDataNode); // adding a previously defined TTreeData
 
-or you can add an array of arrays
+### or you can add an array of arrays
+```php
   $data = array();
   $data[] = array(1,2,3);
   $data[] = array(4,5,6);
   $data[] = array(7,8,9);
   $treelist->AssignArray($data);
+```
 
-or you can add a resultset from a PDO-query
+### or you can add a resultset from a PDO-query
+```php
   $rs = $pdo->query('SELECT * FROM tablename');
   $treelist->AssignPDO($rs);
+```
 
 Just beware that when using AssignArray and AssignPDO the tree is first clean
 from previously added nodes.
@@ -208,16 +207,19 @@ walks through all added nodes, if any filter function has been added then they
 are called, sorts the list and then creates a tree and a linked list returning
 the root node of the tree.
 
+```php
   $data = array();
   $data[] = array(1,2,3);
   $data[] = array(4,5,6);
   $data[] = array(7,8,9);
   $treelist->AssignArray($data);
   $root = $treelist->Build(1);
+```
 This will result in a simple tree based on the second data value from each array
 as the key from which the tree is built. The root node will have the key 5 and
 its left node will have the key 2 and the right node will have the key 8.
 
+```php
   $data = array();
   $data[] = array(1,2,3);
   $data[] = array(4,5,6);
@@ -233,10 +235,12 @@ its left node will have the key 2 and the right node will have the key 8.
     return true;
   });
   $root = $treelist->Build(1);
+```
 This will return the same result as the previous example since the filter
 function removes the three last added arrays (the third index is 0 in these
 arrays).
 
+```php
   $data = array();
   $data[] = array(1,2,3);
   $data[] = array(4,5,6);
@@ -247,8 +251,9 @@ arrays).
   while($node !== null) {
     echo $node[0];
   }
-Will walk through the linked list and echo 147.
+```Will walk through the linked list and echo 147.
 
+```php
   $data = array();
   $data[] = array(1,2,3);
   $data[] = array(4,5,6);
@@ -260,10 +265,12 @@ Will walk through the linked list and echo 147.
   while($node !== null) {
     echo $node[0];
   }
+```
 Will walk through the linked list and echo 147. The index used for building the
 tree has the same value for the second end fouth array which makes them
 duplicates.
 
+```php
   $data = array();
   $data[] = array(1,2,3);
   $data[] = array(4,5,6);
@@ -275,10 +282,12 @@ duplicates.
   while($node !== null) {
     echo $node->PayloadCount();
   }
+```
 Will walk through the linked list and echo the number of payloads (data carrying
 nodes for the node) each node. This will produce 121 since the second array has
 a duplicate value in the fourth array.
 
+```php
   $data = array();
   $data[] = array(1,2,3);
   $data[] = array(4,5,6);
@@ -290,4 +299,5 @@ a duplicate value in the fourth array.
     echo $node->key;
     $node = $node->left;
   }
+```
 Walk through the tree and keep left. This will produce the output 52.
